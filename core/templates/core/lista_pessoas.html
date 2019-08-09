@@ -11,8 +11,14 @@
 	<h1>Core - Lista Pessoas</h1>
 	<ul>
 	{% for pessoa in pessoas %}
-		<li>{{ pessoa.nome }}</li>
+		<li><a href="{% url 'cor_url_pessoas_update' pessoa.id %}"> {{ pessoa.nome }} </a></li>
 	{% endfor %}
 	</ul>
+
+	<form action="{% url 'cor_url_pessoas_novo' %}" method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Cadastrar</button>
+	</form>
 </body>
 </html>

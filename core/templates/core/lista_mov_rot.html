@@ -11,8 +11,14 @@
 	<h1>Core - Lista Movimentos Rotativos</h1>
 	<ul>
 	{% for mr in mov_rot %}
-		<li>{{mr.checkin}} - {{ mr.veiculo.placa }}</li>
+		<li><a href="{% url 'core_url_mov_rot_update' mr.id %}"> {{mr.checkin}} - {{ mr.veiculo.placa }}</a></li>
 	{% endfor %}
 	</ul>
+
+	<form action="{% url 'core_url_mov_rot_novo' %}" method="POST">
+		{% csrf_token %}
+		{{  form.as_p }}
+		<button type="submit">Cadastrar</button>
+	</form>
 </body>
 </html>

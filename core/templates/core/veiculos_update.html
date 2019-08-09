@@ -8,19 +8,12 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>Core - Lista Veiculos</h1>
-	<ul>
-	{% for veiculo in veiculos %}
-		<li><a href="{% url 'core_url_veiculos_update' veiculo.id %}"> {{ veiculo.placa }}</a> </li>
-	{% endfor %}
-	</ul>
+	<h1>{{ veiculo }}</h1>
 
-	<form action="{% url 'core_url_veiculos_novo' %}" method="POST">
+	<form action="{% url 'core_url_veiculos_update'  veiculo.id %}" method="POST">
 		{% csrf_token %}
-
 		{{ form.as_p }}
 		<button type="submit">Cadastrar</button>
 	</form>
-
 </body>
 </html>
