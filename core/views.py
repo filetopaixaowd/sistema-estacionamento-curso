@@ -32,6 +32,14 @@ def pessoa_update(request, id):
     else:
         return render(request, 'core/pessoas_update.html', data)
 
+def pessoa_delete(request, id):
+    pessoa = Pessoa.objects.get(id=id)
+    if request.method == 'POST':
+        pessoa.delete()
+        return redirect('cor_url_pessoas')
+    else:
+        return render(request, 'core/delete_confirm.html')
+
 #########  PESSOAS #############
 
 
@@ -59,6 +67,14 @@ def veiculo_update(request, id):
     else:
         return render(request, 'core/veiculos_update.html', {'veiculo': veiculo, 'form': form})
 
+def veiculo_delete(request, id):
+    veiculo = Veiculos.objects.get(id=id)
+    if request.method == 'POST':
+        veiculo.delete()
+        return redirect('core_url_veiculos')
+    else:
+        return render(request, 'core/delete_confirm.html')
+
 #########  Veiculos #############
 
 
@@ -84,6 +100,14 @@ def mov_rot_update(request, id):
             return redirect('core_url_mov_rot')
     else:
         return render(request, 'core/mr_update.html', {'mr':mr, 'form': form})
+
+def mov_rot_delete(request, id):
+    mr = MovRotativo.objects.get(id=id)
+    if request.method == 'POST':
+        mr.delete()
+        return redirect('core_url_mov_rot')
+    else:
+        return render(request, 'core/delete_confirm.html')
 
 #########  Movimentação Rotativo #############
 
@@ -112,6 +136,14 @@ def mensalista_update(request, id):
     else:
         return render(request, 'core/mensalistas_update.html', {'mensalista': mensalista, 'form': form})
 
+def mensalista_delete(request, id):
+    mensalista = Mensalista.objects.get(id=id)
+    if request.method == 'POST':
+        mensalista.delete()
+        return redirect('core_url_mensalista')
+    else:
+        return render(request, 'core/delete_confirm.html')
+
 #########  Mensalista #############
 
 
@@ -137,5 +169,13 @@ def mov_mes_update(request, id):
             return redirect('core_url_mov_mensalista')
     else:
         return render(request, 'core/mm_update.html', {'mm': mm, 'form': form})
+
+def mov_mes_delete(request, id):
+    mm = MovMensalista.objects.get(id=id)
+    if request.method == 'POST':
+        mm.delete()
+        return redirect('core_url_mov_mensalista')
+    else:
+        return render(request, 'core/delete_confirm.html')
 
 #########  MOV Mensalista #############
